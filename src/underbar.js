@@ -141,19 +141,18 @@
       } 
     }
 
-    else {
-      for (var i = 0; i < array.length; i++) {
-        computedArray.push(iterator(array[i]));
-      }
-      for (var i = 0; i < computedArray.length; i++) {
-        if (seen) {
-        indexArray.push(computedArray[i]));
-        }
-      }
-      for (var i = 0; i < indexArray.length; i++) {
-        result.push(indexArray[i]);
-      }
-    }
+    // else {
+    //   for (var i = 0; i < array.length; i++) {
+    //     computedArray.push(iterator(array[i]));
+    //   }
+    //   for (var i = 0; i < computedArray.length; i++) {
+    //     if () {
+    //     indexArray.push(computedArray[i]));
+    //   }
+    //   for (var i = 0; i < indexArray.length; i++) {
+    //     result.push(indexArray[i]);
+    //   }
+    // }
 
     return result;
   };
