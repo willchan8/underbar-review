@@ -104,57 +104,30 @@
   };
 
   // Produce a duplicate-free version of the array.
-  // _.uniq = function(array, isSorted, iterator) {
-  //   var result = [];
-  //   var unique = {};
-
-  //   // add iterator 
-    
-  //   if (isSorted) {
-  //     for (var i = 0; i < array.length; i++) {
-  //       if (!(iterator(array[i]) in unique)){
-  //         unique[iterator(array[i])] = iterator(array[i]);
-  //       }
-  //     }
-  //   } else { 
-  //     for (var i = 0; i < array.length; i++) {
-  //       unique[(array[i])] = array[i];
-  //     }
-  //   }
-
-  //   for (var key in unique) {
-  //     result.push(unique[key]);
-  //   }
-  //   return result;
-  // };
 
   _.uniq = function(array, isSorted, iterator) {
-    var result = [];
-    var computedArray = [];
-    var indexArray = [];
+   var result = [];
+   var computedArray = [];
+   var seen = [];
 
-    if (iterator === undefined) {
-      for (var i = 0; i < array.length; i++) {
-        if (!result.includes(array[i])) {
-          result.push(array[i]);
-        }
-      } 
-    }
-
-    // else {
-    //   for (var i = 0; i < array.length; i++) {
-    //     computedArray.push(iterator(array[i]));
-    //   }
-    //   for (var i = 0; i < computedArray.length; i++) {
-    //     if () {
-    //     indexArray.push(computedArray[i]));
-    //   }
-    //   for (var i = 0; i < indexArray.length; i++) {
-    //     result.push(indexArray[i]);
-    //   }
-    // }
-
-    return result;
+   if(!iterator) {
+     for (var i = 0; i < array.length; i++) {
+       if (!result.includes(array[i])) {
+         result.push(array[i]);
+       }
+     }
+   } else if (iterator) {
+     for (var i = 0; i < array.length; i++) {
+       computedArray.push(iterator(array[i]));
+     }
+     for (var i = 0; i < computedArray.length; i++) {
+       if (!seen.includes(computedArray[i])) {
+         seen.push(computedArray[i]);
+         result.push(array[i]);
+       }
+     }
+   }
+   return result;
   };
 
 
